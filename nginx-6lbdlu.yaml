@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-6lbdlu
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-6lbdlu
+  namespace: my-nginx-6lbdlu
+  labels:
+    name: nginx-6lbdlu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-6lbdlu
+  template:
+    metadata:
+      namespace: my-nginx-6lbdlu
+      labels:
+        name: nginx-6lbdlu
+    spec:
+      containers:
+      - name: nginx-6lbdlu
+        image: nginx
+        ports:
+        - containerPort: 80
+
